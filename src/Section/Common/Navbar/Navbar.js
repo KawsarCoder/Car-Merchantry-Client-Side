@@ -62,11 +62,18 @@ const Nabvar = () => {
               {tabItems}
             </ul>
           </div>
-          <a href="/" className="btn btn-ghost normal-case text-xl">
-            Car Merchantry
-          </a>
+          <div>
+            <Link to="/" className="btn btn-ghost normal-case text-xl">
+              <img
+                className="w-8 h-8 mr-3 hidden lg:block md:block"
+                src="https://i.ibb.co/y80N8zr/favicon.png"
+                alt="Icon"
+              />
+              Car Merchantry
+            </Link>
+          </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal p-0">{tabItems}</ul>
         </div>
         <div className="navbar-end">
