@@ -8,7 +8,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  // useTitle("Login");
 
   const { userLogin, signIn } = useContext(AuthContext);
 
@@ -22,7 +21,7 @@ const Login = () => {
           email: user.email,
         };
 
-        fetch("https://meta-tube-server.vercel.app/jwt", {
+        fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -52,7 +51,7 @@ const Login = () => {
         };
 
         //get jwt token
-        fetch("https://meta-tube-server.vercel.app/jwt", {
+        fetch("http://localhost:5000/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -61,6 +60,7 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
+            console.log(data);
             localStorage.setItem("user-token", data.token);
             form.reset();
             setError("");
@@ -92,6 +92,7 @@ const Login = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     placeholder="email"
                     className="input input-bordered"
                     required
