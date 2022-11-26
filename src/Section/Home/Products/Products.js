@@ -4,11 +4,11 @@ import ProductsCard from "./ProductsCard/ProductsCard";
 const Products = () => {
   const [productCategories, setProductCategories] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/product")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProductCategories(data));
   }, []);
-
+  console.log(productCategories);
   return (
     <div>
       <div className="grid grid-cols-1 text-center justify-items-center">

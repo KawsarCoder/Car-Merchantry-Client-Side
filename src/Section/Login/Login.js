@@ -60,7 +60,6 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             localStorage.setItem("user-token", data.token);
             form.reset();
             setError("");

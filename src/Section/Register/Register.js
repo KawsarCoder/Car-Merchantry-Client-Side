@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
@@ -9,24 +9,41 @@ const Register = () => {
   const { createUser, loginProfileUpdate } = useContext(AuthContext);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const formSubmit = (event) => {
-    console.log(event);
+    // console.log(event);
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const userType = form.userSelect.value;
+    const userType = form.userType.value;
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    createUser(email, password, name)
+    createUser(email, password, name, userType)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        form.reset();
-        userProfileAdded(name, photoURL, userType);
-        setError("");
-        navigate("/login");
+        const currentUser = {
+          email: user.email,
+        };
+
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            form.reset();
+            localStorage.setItem("user-token", data.token);
+            userProfileAdded(name, photoURL, userType);
+            setError("");
+            navigate(from, { replace: true });
+          });
       })
       .catch((e) => {
         console.log(e);
@@ -39,7 +56,7 @@ const Register = () => {
       photoURL: photoURL,
       userType: userType,
     };
-    console.log(profile);
+    // console.log(profile);
     loginProfileUpdate(profile)
       .then(() => {})
       .catch((e) => console.error(e));
@@ -79,7 +96,7 @@ const Register = () => {
                   />
                 </div>
                 <select
-                  name="userSelect"
+                  name="userType"
                   className="select select-bordered w-full max-w-xs"
                 >
                   <option>Normal User</option>
