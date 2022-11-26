@@ -21,7 +21,6 @@ const Nabvar = () => {
       setBtncollaps(true);
     }
   };
-  console.log(user);
   const tabItems = (
     <>
       <li>
