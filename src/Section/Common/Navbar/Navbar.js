@@ -24,10 +24,10 @@ const Nabvar = () => {
   const tabItems = (
     <>
       <li>
-        <Link to="/Home">Home</Link>
+        <Link to="/home">Home</Link>
       </li>
       <li>
-        <Link to="/Blog">Blog</Link>
+        <Link to="/blog">Blog</Link>
       </li>
     </>
   );
