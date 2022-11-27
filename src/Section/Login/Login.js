@@ -13,31 +13,6 @@ const Login = () => {
 
   const googleProvider = new GoogleAuthProvider();
 
-  const googleSignIn = () => {
-    userLogin(googleProvider)
-      .then((result) => {
-        const user = result.user;
-        const currentUser = {
-          email: user.email,
-        };
-
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(currentUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            localStorage.setItem("user-token", data.token);
-            setError("");
-            navigate(from, { replace: true });
-          });
-      })
-      .catch((error) => console.error(error));
-  };
-
   const loginFormHandle = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -72,6 +47,32 @@ const Login = () => {
         setError(e.message);
       });
   };
+
+  const googleSignIn = () => {
+    userLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        const currentUser = {
+          email: user.email,
+        };
+
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            localStorage.setItem("user-token", data.token);
+            setError("");
+            navigate(from, { replace: true });
+          });
+      })
+      .catch((error) => console.error(error));
+  };
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-200">
