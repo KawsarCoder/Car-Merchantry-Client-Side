@@ -13,7 +13,7 @@ const Footer = () => {
             Contact
           </Link>
           <Link to="/" className="link link-hover">
-            Jobs
+            Sales
           </Link>
           <Link to="/" className="link link-hover">
             Press kit
@@ -57,7 +57,7 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          <p>Copyright © 2022 - All right reserved by ACME Industries Ltd</p>
+          <p>Copyright © 2022 - All right reserved by Car Merchantry</p>
         </div>
       </footer>
     </div>
