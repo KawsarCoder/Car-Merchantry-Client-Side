@@ -4,7 +4,6 @@ import SingleProduct from "./SingleProduct/SingleProduct";
 
 const CategoriesProduct = () => {
   const { name, _id } = useLoaderData();
-  // console.log(_id);
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -12,8 +11,6 @@ const CategoriesProduct = () => {
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
-  // console.log(items);
-
   return (
     <div>
       {items.length > 0 ? (
