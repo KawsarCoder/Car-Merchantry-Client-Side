@@ -34,7 +34,7 @@ const SingleCard = ({ card }) => {
               </span>
             </h5>
 
-            <ToastContainer position="top-center" />
+            <ToastContainer position="top-right" />
             <div className="card-actions justify-end">
               <label onClick={checkName} htmlFor="my-modal" className="btn">
                 Buy Now

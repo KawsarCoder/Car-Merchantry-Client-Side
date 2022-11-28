@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthContext } from "../../../../../../AuthProvider/AuthProvider";
-
 import { toast } from "react-toastify";
 
 const Modal = ({ clickCard }) => {
