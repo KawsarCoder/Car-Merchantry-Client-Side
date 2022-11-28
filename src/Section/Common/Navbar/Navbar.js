@@ -78,18 +78,10 @@ const Nabvar = () => {
             <ul className="py-1" aria-labelledby="user-menu-button">
               <li>
                 <Link
-                  to="/reviews"
+                  to="/my-product"
                   className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-900 dark:hover:text-white"
                 >
                   My Product
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/service/add"
-                  className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-900 dark:hover:text-white"
-                >
-                  Add Product
                 </Link>
               </li>
 
