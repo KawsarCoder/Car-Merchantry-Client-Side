@@ -6,7 +6,8 @@ import SaleInfo from "./SaleInfo/SaleInfo";
 const Home = () => {
   return (
     <div>
-      <Carousel></Carousel>\<Products></Products>
+      <Carousel></Carousel>
+      <Products></Products>
       <SaleInfo></SaleInfo>
     </div>
   );
