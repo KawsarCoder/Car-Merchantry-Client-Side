@@ -18,12 +18,16 @@ const SingleCard = ({ card }) => {
           </figure>
           <div className="card-body">
             <h2 className="card-title">{card.name}</h2>
-            <p>location: {card.location}</p>
-            <h5>Resale price: {card.resalePrice} $</h5>
-            <h5>Original price: {card.originalPrice} $</h5>
-            <span>Years of use: {card.useYears} years</span>
-            <h4>Posted time: {card.date}</h4>
-            <h5 className="flex">
+            <p className="font-bold">location: {card.location}</p>
+            <h5 className="font-bold">Resale price: {card.resalePrice} $</h5>
+            <h5 className="font-bold">
+              Original price: {card.originalPrice} $
+            </h5>
+            <span className="font-bold">
+              Years of use: {card.useYears} years
+            </span>
+            <h4 className="font-bold">Posted time: {card.date}</h4>
+            <h5 className="flex font-bold">
               Seller's name: {card.sellersName}{" "}
               <span className="ml-2 text-blue-600 mt-1">
                 <FaCheckCircle />

@@ -6,7 +6,8 @@ const Blog = () => {
       <div className="card bg-gray-200 shadow-xl">
         <div className="card-body">
           <h2 className="card-title">
-            What are the different ways to manage a state in a React application
+            What are the different ways to manage a state in a React
+            application?
           </h2>
           <p>
             React state management is a process for managing the data that React
@@ -52,7 +53,9 @@ const Blog = () => {
       </div>
       <div className="card bg-gray-200 shadow-xl">
         <div className="card-body">
-          <h2 className="card-title">React vs Angular vs Vue</h2>
+          <h2 className="card-title">
+            Comparison between React vs Angular vs Vue
+          </h2>
           <p>
             Vue provides higher customize ability and hence is easier to learn
             than Angular or React. Further, Vue has an overlap with Angular and
