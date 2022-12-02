@@ -44,6 +44,7 @@ const CategoriesProduct = () => {
           <SingleProduct
             key={item._id}
             companyID={_id}
+            companyName={name}
             item={item}
           ></SingleProduct>
         ))}

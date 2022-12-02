@@ -8,8 +8,7 @@ const Modal = ({ clickCard }) => {
   const notify = () => {
     toast.success("Your order is confirmed");
   };
-  let items = clickCard;
-
+  console.log(clickCard);
   return (
     <div>
       <div className="modal-box">
@@ -17,16 +16,8 @@ const Modal = ({ clickCard }) => {
         <h4 className="font-bold mt-2 text-gray-700">
           Buyer email: {user?.email}
         </h4>
-        <h4 className="mt-2">
-          {items.length > 0 ? <h1>Product name: {items.name}</h1> : <></>}
-        </h4>
-        <h4 className="mt-2">
-          {items.length > 0 ? (
-            <h2>Product price: {items.resalePrice} $</h2>
-          ) : (
-            <></>
-          )}
-        </h4>
+        <h4 className="mt-2">Product name: {clickCard.name}</h4>
+        <h4 className="mt-2">Product price: {clickCard.resalePrice} $</h4>
 
         <div className="grid grid-cols-12 mt-2">
           <label htmlFor="number" className="col-span-3">

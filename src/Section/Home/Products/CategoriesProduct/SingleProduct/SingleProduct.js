@@ -1,11 +1,17 @@
 import React from "react";
 import SingleCard from "./SingleCard/SingleCard";
 
-const SingleProduct = ({ companyID, item }) => {
+const SingleProduct = ({ companyID, item, companyName }) => {
   let products = [];
-  if (item.serviceID === companyID) {
+  if (
+    item.serviceID === companyID ||
+    item.categories === "BMW" ||
+    item.categories === "Nisshan" ||
+    item.categories === "Tesla"
+  ) {
     products.push(item);
   }
+  console.log(item);
   return (
     <div>
       {products.length > 0 ? (

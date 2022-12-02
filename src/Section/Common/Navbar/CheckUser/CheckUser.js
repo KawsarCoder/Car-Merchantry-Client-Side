@@ -10,7 +10,7 @@ const CheckUser = ({ logOut, email, users }) => {
     }
   };
   users.map((usr) => findUser(usr));
-  console.log(users);
+  
   return (
     <div>
       <div>

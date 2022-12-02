@@ -165,7 +165,7 @@ const Register = () => {
                     Sign up
                   </button>
                 </div>
-                <ToastContainer />
+                <ToastContainer position="top-center" />
                 <span className="block mt-2 text-sm text-red-700 rounded-lg dark:bg-red-200 dark:text-red-800">
                   {error}
                 </span>

@@ -5,9 +5,10 @@ import Modal from "../Modal/Modal";
 
 const SingleCard = ({ card }) => {
   const [clickCard, setClickCard] = useState([]);
-
-  const checkName = () => {
-    setClickCard(card);
+  const checkName = (value) => {
+    if (value === card) {
+      setClickCard(card);
+    }
   };
   return (
     <div>
@@ -36,7 +37,11 @@ const SingleCard = ({ card }) => {
 
             <ToastContainer position="top-right" />
             <div className="card-actions justify-end">
-              <label onClick={checkName} htmlFor="my-modal" className="btn">
+              <label
+                onClick={() => checkName(card)}
+                htmlFor="my-modal"
+                className="btn"
+              >
                 Buy Now
               </label>
 
