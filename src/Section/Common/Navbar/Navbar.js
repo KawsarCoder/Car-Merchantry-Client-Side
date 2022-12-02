@@ -1,6 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import CheckUser from "./CheckUser/CheckUser";
 
 const Nabvar = () => {
   const [buttonCollaps, setBtncollaps] = useState(false);
@@ -10,6 +11,13 @@ const Nabvar = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:5000/users")
+      .then((res) => res.json())
+      .then((data) => setUsers(data));
+  }, []);
+  
   const collapsBtnClick = () => {
     if (buttonCollaps === true) {
       const clicking = document.getElementById("toggle-value");
@@ -31,7 +39,7 @@ const Nabvar = () => {
       </li>
     </>
   );
-
+  // console.log(users);
   const userInfo = (
     <>
       {user?.uid ? (
@@ -75,25 +83,13 @@ const Nabvar = () => {
                 {user?.email}
               </span>
             </div>
-            <ul className="py-1" aria-labelledby="user-menu-button">
-              <li>
-                <Link
-                  to="/my-product"
-                  className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-900 dark:hover:text-white"
-                >
-                  My Product
-                </Link>
-              </li>
-
-              <li>
-                <button
-                  onClick={logOut}
-                  className="text-white px-2 py-1 my-3 rounded-md mx-3 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg  dark:shadow-blue-800/80 "
-                >
-                  log out
-                </button>
-              </li>
-            </ul>
+            <div>
+              <CheckUser
+                users={users}
+                logOut={logOut}
+                email={user.email}
+              ></CheckUser>
+            </div>
           </div>
           <button
             data-collapse-toggle="mobile-menu-2"

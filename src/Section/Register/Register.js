@@ -1,28 +1,42 @@
 import React from "react";
 import { useContext } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
   const [error, setError] = useState("");
   const { createUser, loginProfileUpdate } = useContext(AuthContext);
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-
+  const handleUsers = (user) => {
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {})
+      .catch((e) => console.error(e));
+  };
   const formSubmit = (event) => {
-    // console.log(event);
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
-    const userType = form.userType.value;
-    const photoURL = form.photoURL.value;
     const email = form.email.value;
+    const photoURL = form.photoURL.value;
+    const phoneNumber = form.phone.value;
+    const userType = form.userType.value;
     const password = form.password.value;
-
-    createUser(email, password, name, userType)
+    const userValue = {
+      name,
+      phoneNumber,
+      userType,
+      email,
+      photoURL,
+    };
+    createUser(email, password, name)
       .then((result) => {
         const user = result.user;
         const currentUser = {
@@ -38,11 +52,12 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            form.reset();
             localStorage.setItem("user-token", data.token);
-            userProfileAdded(name, photoURL, userType);
+            userProfileAdded(name, photoURL);
+            handleUsers(userValue);
+            form.reset();
             setError("");
-            navigate(from, { replace: true });
+            window.location.reload();
           });
       })
       .catch((e) => {
@@ -50,17 +65,19 @@ const Register = () => {
         setError(e.message);
       });
   };
-  const userProfileAdded = (name, photoURL, userType) => {
+  const userProfileAdded = (name, photoURL) => {
     const profile = {
       displayName: name,
       photoURL: photoURL,
-      userType: userType,
     };
-    // console.log(profile);
     loginProfileUpdate(profile)
       .then(() => {})
       .catch((e) => console.error(e));
   };
+  const notify = () => {
+    toast("Registration Successful!");
+  };
+
   return (
     <div>
       <form onSubmit={formSubmit}>
@@ -88,19 +105,21 @@ const Register = () => {
                     Your number (enter 11 digit phone number)
                   </label>
                   <input
-                    type="tel"
+                    type="number"
                     pattern="[0-9]{11}"
                     name="phone"
                     placeholder="Enter your name"
                     className="input input-bordered w-full max-w-xs"
                   />
                 </div>
+                <label htmlFor="userSelect">Select user type</label>
                 <select
                   name="userType"
+                  id="userType"
                   className="select select-bordered w-full max-w-xs"
                 >
-                  <option>Normal User</option>
-                  <option>Seller Account</option>
+                  <option>Buyer</option>
+                  <option>Seller</option>
                 </select>
                 <div>
                   <label
@@ -142,8 +161,11 @@ const Register = () => {
                   />
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Sign up</button>
+                  <button className="btn btn-primary" onClick={notify}>
+                    Sign up
+                  </button>
                 </div>
+                <ToastContainer />
                 <span className="block mt-2 text-sm text-red-700 rounded-lg dark:bg-red-200 dark:text-red-800">
                   {error}
                 </span>

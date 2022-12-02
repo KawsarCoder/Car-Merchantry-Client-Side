@@ -22,7 +22,7 @@ const Modal = ({ clickCard }) => {
         </h4>
         <h4 className="mt-2">
           {items.length > 0 ? (
-            <h2>Product name: {items.resalePrice} $</h2>
+            <h2>Product price: {items.resalePrice} $</h2>
           ) : (
             <></>
           )}
