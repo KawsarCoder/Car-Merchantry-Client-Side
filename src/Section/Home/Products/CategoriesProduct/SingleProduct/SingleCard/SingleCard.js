@@ -27,7 +27,9 @@ const SingleCard = ({ card }) => {
             <span className="font-bold">
               Years of use: {card.useYears} years
             </span>
-            <h4 className="font-bold">Posted time: {card.date}</h4>
+            <h4 className="font-bold">
+              Posted time: {card.date ? card.date : <>03/12/2022</>}
+            </h4>
             <h5 className="flex font-bold">
               Seller's name: {card.sellersName}{" "}
               <span className="ml-2 text-blue-600 mt-1">
