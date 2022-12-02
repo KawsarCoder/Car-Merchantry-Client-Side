@@ -9,7 +9,7 @@ const Register = () => {
   const { createUser, loginProfileUpdate } = useContext(AuthContext);
 
   const handleUsers = (user) => {
-    fetch("http://localhost:5000/users", {
+    fetch("https://car-server-vert.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -108,7 +108,7 @@ const Register = () => {
                     type="number"
                     pattern="[0-9]{11}"
                     name="phone"
-                    placeholder="Enter your name"
+                    placeholder="Enter your number"
                     className="input input-bordered w-full max-w-xs"
                   />
                 </div>

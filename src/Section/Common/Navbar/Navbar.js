@@ -13,11 +13,11 @@ const Nabvar = () => {
   };
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/users")
+    fetch("https://car-server-vert.vercel.app/users")
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
-  
+
   const collapsBtnClick = () => {
     if (buttonCollaps === true) {
       const clicking = document.getElementById("toggle-value");

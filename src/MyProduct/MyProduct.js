@@ -7,7 +7,7 @@ const MyProduct = () => {
   const [items, setItems] = useState([]);
 
   useState(() => {
-    fetch(`http://localhost:5000/items?email=${user?.email}`, {
+    fetch(`https://car-server-vert.vercel.app/items?email=${user?.email}`, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("user-token")}`,
       },
@@ -26,7 +26,7 @@ const MyProduct = () => {
   const handleDelete = (id) => {
     const process = window.confirm("Are sure to remove this product");
     if (process) {
-      fetch(`http://localhost:5000/items/${id}`, {
+      fetch(`https://car-server-vert.vercel.app/items/${id}`, {
         method: "DELETE",
         headers: {
           authorization: `Bearer ${localStorage.getItem("user-token")}`,
