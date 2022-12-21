@@ -13,24 +13,24 @@ const SingleCard = ({ card }) => {
   return (
     <div>
       <>
-        <div className="card lg:card-side p-5 bg-gray-200 shadow-xl">
-          <figure className="lg:w-96">
+        <div className="card grid lg:grid-cols-2 grid-cols-1 lg:card-side p-5 bg-gray-200 shadow-xl">
+          <div className="grid items-stretch">
             <img className="rounded-md" src={card.img} alt="Album" />
-          </figure>
+          </div>
           <div className="card-body">
-            <h2 className="card-title">{card.name}</h2>
-            <p className="font-bold">location: {card.location}</p>
-            <h5 className="font-bold">Resale price: {card.resalePrice} $</h5>
+            <h2 className="card-title text-2xl text-blue-600 font-bold">
+              {card.name}
+            </h2>
+            <p>location: {card.location}</p>
+            <h5 className="font-bold text-rose-500">
+              Resale price: {card.resalePrice} $
+            </h5>
             <h5 className="font-bold">
               Original price: {card.originalPrice} $
             </h5>
-            <span className="font-bold">
-              Years of use: {card.useYears} years
-            </span>
-            <h4 className="font-bold">
-              Posted time: {card.date ? card.date : <>03/12/2022</>}
-            </h4>
-            <h5 className="flex font-bold">
+            <span>Years of use: {card.useYears} years</span>
+            <h4>Posted time: {card.date ? card.date : <>03/12/2022</>}</h4>
+            <h5 className="flex">
               Seller's name: {card.sellersName}{" "}
               <span className="ml-2 text-blue-600 mt-1">
                 <FaCheckCircle />
@@ -42,7 +42,7 @@ const SingleCard = ({ card }) => {
               <label
                 onClick={() => checkName(card)}
                 htmlFor="my-modal"
-                className="btn"
+                className="btn rounded-md"
               >
                 Buy Now
               </label>

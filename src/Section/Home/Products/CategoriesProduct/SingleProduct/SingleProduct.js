@@ -3,12 +3,7 @@ import SingleCard from "./SingleCard/SingleCard";
 
 const SingleProduct = ({ companyID, item, companyName }) => {
   let products = [];
-  if (
-    item.serviceID === companyID ||
-    item.categories === "BMW" ||
-    item.categories === "Nisshan" ||
-    item.categories === "Tesla"
-  ) {
+  if (companyName === item.categories) {
     products.push(item);
   }
   console.log(item);

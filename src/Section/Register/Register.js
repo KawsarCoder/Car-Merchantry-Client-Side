@@ -2,13 +2,13 @@ import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
-import { toast, ToastContainer } from "react-toastify";
 
 const Register = () => {
   const [error, setError] = useState("");
   const { createUser, loginProfileUpdate } = useContext(AuthContext);
 
   const handleUsers = (user) => {
+    console.log(user);
     fetch("https://car-server-vert.vercel.app/users", {
       method: "POST",
       headers: {
@@ -17,7 +17,13 @@ const Register = () => {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((data) => {})
+      .then((data) => {
+        if (data.acknowledged) {
+          alert("Register successful  added successfully");
+
+          window.location.reload();
+        }
+      })
       .catch((e) => console.error(e));
   };
   const formSubmit = (event) => {
@@ -57,7 +63,6 @@ const Register = () => {
             handleUsers(userValue);
             form.reset();
             setError("");
-            window.location.reload();
           });
       })
       .catch((e) => {
@@ -73,9 +78,6 @@ const Register = () => {
     loginProfileUpdate(profile)
       .then(() => {})
       .catch((e) => console.error(e));
-  };
-  const notify = () => {
-    toast("Registration Successful!");
   };
 
   return (
@@ -161,11 +163,10 @@ const Register = () => {
                   />
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary" onClick={notify}>
+                  <button className="btn btn-primary">
                     Sign up
                   </button>
                 </div>
-                <ToastContainer position="top-center" />
                 <span className="block mt-2 text-sm text-red-700 rounded-lg dark:bg-red-200 dark:text-red-800">
                   {error}
                 </span>

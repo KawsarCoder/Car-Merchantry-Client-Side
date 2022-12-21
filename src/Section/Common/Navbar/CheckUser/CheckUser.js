@@ -3,14 +3,13 @@ import { Link } from "react-router-dom";
 
 const CheckUser = ({ logOut, email, users }) => {
   let realUser = [];
-
   const findUser = (usr) => {
+    // console.log(usr.email);
     if (usr.email === email) {
       realUser.push(usr);
     }
   };
   users.map((usr) => findUser(usr));
-  
   return (
     <div>
       <div>

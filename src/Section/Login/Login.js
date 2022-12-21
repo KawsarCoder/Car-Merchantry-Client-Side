@@ -75,7 +75,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen my-20">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
             <img
@@ -93,7 +93,7 @@ const Login = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="email"
+                    placeholder="Enter your email"
                     className="input input-bordered"
                     required
                   />
@@ -105,7 +105,7 @@ const Login = () => {
                   <input
                     type="password"
                     name="password"
-                    placeholder="password"
+                    placeholder="Enter your password"
                     className="input input-bordered"
                     required
                   />
@@ -114,11 +114,11 @@ const Login = () => {
                   {error}
                 </span>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Login</button>
+                  <button className="btn btn-primary rounded-md">Login</button>
                 </div>
 
                 <label>
-                  <span>you haven't account?</span>
+                  <span>your haven't account?</span>
                   <Link
                     to="/register"
                     className="font-bold ml-3 text-sm text-rose-400"

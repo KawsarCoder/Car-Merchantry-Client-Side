@@ -5,16 +5,15 @@ import SingleProduct from "./SingleProduct/SingleProduct";
 const CategoriesProduct = () => {
   const { name, _id } = useLoaderData();
   const [items, setItems] = useState([]);
-
   useEffect(() => {
     fetch("https://car-server-vert.vercel.app/items")
       .then((res) => res.json())
       .then((data) => setItems(data));
   }, []);
   return (
-    <div>
+    <div className="lg:w-[1170px] m-auto w-full">
       {items.length > 0 ? (
-        <h1 className="text-rose-400 font-bold text-center p-10 text-2xl">
+        <h1 className="text-blue-400 font-bold text-center p-10 text-2xl">
           Here is second hand {name}
         </h1>
       ) : (

@@ -151,7 +151,7 @@ const AddProduct = () => {
                 <option disabled selected>
                   Location
                 </option>
-                <option>Chattogram</option>
+                <option>CTG</option>
                 <option>Dhaka</option>
                 <option>Barishal</option>
                 <option>Rajshahi</option>
@@ -168,7 +168,7 @@ const AddProduct = () => {
                 <option disabled selected>
                   Select catagories
                 </option>
-                <option>Nisshan</option>
+                <option>Nissan</option>
                 <option>Tesla</option>
                 <option>BMW</option>
               </select>

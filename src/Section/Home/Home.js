@@ -6,7 +6,7 @@ import SaleInfo from "./SaleInfo/SaleInfo";
 
 const Home = () => {
   return (
-    <div>
+    <div className="w-[1170px] mx-auto">
       <Carousel></Carousel>
       <Products></Products>
       <AdvertiseItems></AdvertiseItems>

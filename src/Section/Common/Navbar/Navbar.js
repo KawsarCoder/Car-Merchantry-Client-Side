@@ -17,7 +17,7 @@ const Nabvar = () => {
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, []);
-
+  // console.log(user?.email);
   const collapsBtnClick = () => {
     if (buttonCollaps === true) {
       const clicking = document.getElementById("toggle-value");
@@ -39,7 +39,6 @@ const Nabvar = () => {
       </li>
     </>
   );
-  // console.log(users);
   const userInfo = (
     <>
       {user?.uid ? (
@@ -87,7 +86,7 @@ const Nabvar = () => {
               <CheckUser
                 users={users}
                 logOut={logOut}
-                email={user.email}
+                email={user?.email}
               ></CheckUser>
             </div>
           </div>
@@ -127,8 +126,8 @@ const Nabvar = () => {
     </>
   );
   return (
-    <div>
-      <div className="navbar bg-base-100">
+    <div className="bg-gray-100">
+      <div className="navbar lg:w-[1170px] mx-auto w-ful">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
