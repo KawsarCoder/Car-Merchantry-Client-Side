@@ -6,7 +6,7 @@ https://car-merchantry.web.app/
 
 => using technology: React, Tailwind, DaisyUI, Firebase, MongoDB, JWT
 
-= Anyone can buy from this site
+=> Anyone can buy from this site
 
 => Seller can sale their car using this site
 
